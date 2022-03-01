@@ -1,0 +1,54 @@
+# Deliverables
+
+The main deliverable for the Hyperparameter Optimization subgroup as of the midterm is this code repository: https://github.com/Arrrlex/bdqm-hyperparam-tuning/tree/d2703c93efc9575dfd3c3082b6cd5d5ae1e9d19f (link is provided to the latest commit as of submission).
+
+See also this fork of the amptorch library, featuring bugfixes and extra features for hyperparameter optimization: https://github.com/Arrrlex/amptorch/tree/a46982662bf7000fafe14c3adb66beb76d174b9e
+
+Instructions for running hyperparameter optimization can be found in the README of the first repo.
+
+# Individual Contributions
+
+My individual contributions were as follows:
+
+- Getting amptorch to run on PACE-ICE (with and without a GPU)
+- Setting up the github repository to store all code
+- Doing some shallow research on different hyperparameter optimization libraries and choosing optuna, for reasons outlined in the group's shared google doc (see appendix 1).
+- Splitting off a dedicated validation dataset, in order to avoid tuning on the test set 
+- Parallelizing the optimization job, which involved:
+  - Setting up MySQL on PACE
+  - Writing a script to automatically queue multiple jobs, and keep track of the MySQL PACE job (see jobs/run-tuning-jobs.sh)
+- Drawing up an initial list of hyperaparameters to optimize
+
+# Self-Assessment
+
+Although it took me a few weeks to learn enough background to get to the point of being a useful contributor, I believe I made significant contributions to the hyperparameter optimization subgroup (perhaps the main contributions). In particular, my work has enabled the group to:
+
+1. Utilize GPUs via PACE-ICE
+2. Run jobs in parallel
+
+These will allow us to explore a wider range of hyperparameters. 
+
+In addition to these concrete steps, I have made progress towards longer-term, softer goals in the following way:
+
+1. By creating a repo for shared code, I'm encouraging collaboration and progress sharing
+2. I've clearly documented all the steps necessary to get the code to run, allowing the on-ramp for other members to be smooth
+3. My choice of optuna, as a mature, user-friendly, feature-rich optimization library, will enable us to move faster in the second half of the semester
+
+
+# Appendix: Choosing a Hyperopt Library
+
+Here is the relevant section of our shared notes that I wrote:
+
+ - Optuna
+   - 5.9K github stars
+   - Newer than hyperopt, looks a bit friendlier
+   - It’s really easy to have hyperparameters that depend on other hyperparameters
+ - Hyperopt
+   - 6.1K github stars
+ - Ray.tune
+   - 19K github stars for the Ray framework
+   - Not sure if you can use ray.tune without the rest of the framework you can, see example
+ - Ax
+   - 1.7K github stars
+   - Last semester used this package
+   - Looking at the “Why Ax?” page , none of the 4 “unique capabilities” seem to apply to our project: it’s not particularly noisy (compared to a real-world A/B test), we don’t need a ton of customisation, we only have a single type of experiment, and we’re currently only trying to optimize for a single objective (MAE). This makes me wonder if other libraries might be better suited to our use-case.
