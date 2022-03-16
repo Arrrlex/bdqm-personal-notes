@@ -3,7 +3,7 @@
 ## Tasks Completed
 
 As part of the Hyperparameter Optimization project group, in the last 2 weeks I:
- 
+
 - Set up PACE and learned how to submit jobs
 - Successfully trained an AMPTorch model using the PACE ICE cluster on a GPU
   - I wrote up detailed instructions for doing this on a shared Google Doc, including troubleshooting tips
@@ -18,8 +18,8 @@ As part of the Hyperparameter Optimization project group, in the last 2 weeks I:
 For the next 2 weeks, I will:
 
 - Train an AMPTorch model using the correct data for this project, instead of the (small) water dataset
-- Run a simple hyperparameter optimization job 
-- Dockerize the hyperparameter optimization job, in order to share the code with people with better GPUs 
+- Run a simple hyperparameter optimization job
+- Dockerize the hyperparameter optimization job, in order to share the code with people with better GPUs
 - Parallelize the hyperparameter optimization job, to enable a larger search space
 
 ## Contribution Description
