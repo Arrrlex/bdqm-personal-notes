@@ -18,12 +18,7 @@ The first trick we apply is to train a model which predicts per-atom energy, whi
 
 Let's fix an atom that we're focusing on. For practical reasons, let's apply a cutoff function to discard any atoms which aren't within a neighborhood of our chosen atom (say $r$). We're still left with a variable-length list of atoms.
 
-What we want is a _fingerprinting scheme_, i.e. a function from this variable-length list of atoms to a fixed-length vector, which we can then feed into a neural network. Our fingerprinting scheme should satisfy these properties as above:
-- Order invariance
-- Translational invariance
-- Rotational invariance
-
-In addition, to be successful as an input to the neural network, the fingerprint should be more-or-less unique.
+What we want is a _fingerprinting scheme_, i.e. a function from this variable-length list of atoms to a fixed-length vector, which we can then feed into a neural network. Our fingerprinting scheme should satisfy the invariances listed above. In addition, to be successful as an input to the neural network, the fingerprint should be more-or-less unique.
 
 ## Probes
 
@@ -55,13 +50,13 @@ $$
 \mu_{\sigma, abc} = \left\langle \mathrm{probe}_{\sigma, abc}, \hat{\rho} \right\rangle
 $$
 
-Taking the inner product of two 3D functions is a volume integral, but luckily the fine folks at the Medford group have solved it analytically.
+Taking the inner product of two 3D functions is a volume integral, but luckily the fine folks at the Medford group have solved this one analytically.
 
 ## Rotational Invariance
 
 Oh no, we forgot about rotational invariance! Since our angular probes $\mu$ have direction, if we rotate the system we'll end up hitting different angular probes so the final result will change.
 
-Fear not however! The MCSH functions are divided up into _groups_, which are closed under rotation. Thus, for each group $p_1, p_2, \ldots, p_n$ in group $P$, we replace the features $\mu_{\sigma, p_1}, \ldots, \mu_{\sigma, p_n}$ with their _norm_:
+Fear not however! The MCSH functions are divided up into _groups_, which are closed under rotation (by some fixed angle). Thus, for each group $p_1, p_2, \ldots, p_n$ in group $P$, we replace the features $\mu_{\sigma, p_1}, \ldots, \mu_{\sigma, p_n}$ with their _norm_:
 
 $$
 \Phi_{\sigma, P} = \sqrt{\sum_{i=1}^n \mu_{\sigma, p_i}}
