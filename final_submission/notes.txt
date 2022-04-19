@@ -20,6 +20,8 @@ Using AmpOpt, I:
 
 I also did ad-hoc data analysis to understand why different datasets were giving us radically different results.
 
+I also made some small modifications to amptorch to enable the workflows of AmpOpt.
+
 # Self Assessment
 
 ## Things I did well
@@ -35,7 +37,7 @@ I also wrote extensive documentation and I'm optimistic about people using it.
 ## Things I could improve
 
 1. I could have insisted more on getting feedback early, from both my teammates and the Medford Group grad students for the AmpOpt codebase.
-1. I could have written unit tests, which would have helped me catch many refactoring bugs significantly earlier
-1. I could have spent less time "bikeshedding" the design of AmpOpt and more time focused on running experiments
-1. I was not very happy with the collaboration in our team. I felt like for parts of the semester I was working alone, and to the end I was the only person contributing to the AmpOpt code base. I could have raised my concerns about this setup earlier, in order to either get contributions or feedback (either about the code, my approach or my collaboration style).
-1. Finally, I often changed my mind about priorities during the semester (as can be seen from my biweekly reports), and I think I could have benefitted from better focus and setting myself clearer goals.
+2. I could have written unit tests, which would have helped me catch many refactoring bugs significantly earlier
+3. I could have spent less time "bikeshedding" the design of AmpOpt and more time focused on running experiments
+4. I was not very happy with the collaboration in our team. I felt like for parts of the semester I was working alone, and to the end I was the only person contributing to the AmpOpt code base. I could have raised my concerns about this setup earlier, in order to either get contributions or feedback (either about the code, my approach or my collaboration style).
+5. Finally, I often changed my mind about priorities during the semester (as can be seen from my biweekly reports), and 6 think I could have benefitted from better focus and setting myself clearer goals.
