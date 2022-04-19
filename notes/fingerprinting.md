@@ -7,11 +7,13 @@ The inputs of this dataset consist of a list of atoms, a list of atom bonds betw
 The difficulty is that this is a list of variable length. Naively, we would need a different neural network for each number of atoms. That's going to be extremely inefficient for learning, and won't generalize in case our dataset is missing lists of a certain length. Instead, let's find a way to train a single model which works for any number of atoms.
 
 No matter how we arrange our learning and prediction scheme, we'll want to satisfy certain properties:
+
 - Order invariance: if we change the order in which we present the atoms, the result doesn't change
 - Translational invariance: if we shift the whole system by a constant, the result doesn't change
 - Rotational invariance: if we rotate the whole system, the result doesn't change
 
 The first trick we apply is to train a model which predicts per-atom energy, which we then sum to get the total energy. This has a number of benefits:
+
 - It's theoretically sound (apparently)
 - Since we're doing something to each atom, then summing them (a commutative operation), this gives us order invariance (provided that whatever we're doing to each atom is also order-invariant)
 - Summation is differentiable, so we'll be able to apply backpropogation
@@ -26,11 +28,11 @@ Our approach uses _probes_. Probes are functions that tell us about the neighbor
 
 Each probe is constructed by taking some function and placing a copy of it over each atom within the cutoff, then adding all the values up.
 
-The Gaussian radial probe is constructed from Gaussians. It takes a parameter $\sigma$, the "radius" of the Gaussian. If we have several probes each with different value for $\sigma$, we can build up a picture of how far away nearby atoms are.
+The Gaussian radial probe is constructed from Gaussians. It takes a parameter $\\sigma$, the "radius" of the Gaussian. If we have several probes each with different value for $\\sigma$, we can build up a picture of how far away nearby atoms are.
 
 The MCSH angular probe is constructed from Maxwell-Cartesian spherical harmonic functions. For a given "order" $n$, there are $n!$ spherical harmonic functions of that order. These functions all "point" in different directions. If we have a probe for every function up to order $n$, we can build up a picture of which directions nearby atoms are in.
 
-We pointwise multiply each radial probe $G_\sigma$ with each angular probe $S_{abc}$ to get $\mathrm{probe}_{\sigma, abc}$.
+We pointwise multiply each radial probe $G\_\\sigma$ with each angular probe $S\_{abc}$ to get $\\mathrm{probe}\_{\\sigma, abc}$.
 
 ## GMP and Electron Density
 
@@ -44,34 +46,34 @@ Electron density refers to the probability density function for electrons, i.e. 
 
 We can approximate electron density by fitting a sum-of-Gaussians model for each element. The Medford group has already done this.
 
-If we then put this electron density sum-of-Gaussian over each atom in the neighborhood and add them all up, we get the electron density for the whole neighborhood $\hat{\rho}$. Now, to compute our features, instead of evaluating our probe at the atom's location, we can take the inner product of the probe and the electron density function:
+If we then put this electron density sum-of-Gaussian over each atom in the neighborhood and add them all up, we get the electron density for the whole neighborhood $\\hat{\\rho}$. Now, to compute our features, instead of evaluating our probe at the atom's location, we can take the inner product of the probe and the electron density function:
 
 $$
-\mu_{\sigma, abc} = \left\langle \mathrm{probe}_{\sigma, abc}, \hat{\rho} \right\rangle
+\\mu\_{\\sigma, abc} = \\left\\langle \\mathrm{probe}\_{\\sigma, abc}, \\hat{\\rho} \\right\\rangle
 $$
 
 Taking the inner product of two 3D functions is a volume integral, but luckily the fine folks at the Medford group have solved this one analytically.
 
 ## Rotational Invariance
 
-Oh no, we forgot about rotational invariance! Since our angular probes $\mu$ have direction, if we rotate the system we'll end up hitting different angular probes so the final result will change.
+Oh no, we forgot about rotational invariance! Since our angular probes $\\mu$ have direction, if we rotate the system we'll end up hitting different angular probes so the final result will change.
 
-Fear not however! The MCSH functions are divided up into _groups_, which are closed under rotation (by some fixed angle). Thus, for each group $p_1, p_2, \ldots, p_n$ in group $P$, we replace the features $\mu_{\sigma, p_1}, \ldots, \mu_{\sigma, p_n}$ with their _norm_:
+Fear not however! The MCSH functions are divided up into _groups_, which are closed under rotation (by some fixed angle). Thus, for each group $p_1, p_2, \\ldots, p_n$ in group $P$, we replace the features $\\mu\_{\\sigma, p_1}, \\ldots, \\mu\_{\\sigma, p_n}$ with their _norm_:
 
 $$
-\Phi_{\sigma, P} = \sqrt{\sum_{i=1}^n \mu_{\sigma, p_i}}
+\\Phi\_{\\sigma, P} = \\sqrt{\\sum\_{i=1}^n \\mu\_{\\sigma, p_i}}
 $$
 
-The features $\Phi$ are the final features for the GMP fingerprinting scheme.
+The features $\\Phi$ are the final features for the GMP fingerprinting scheme.
 
 ## GMP Parameters
 
 There are 3 decisions to take when taking GMP fingerprints:
 
 1. Which sigmas should I use for the radial probes?
-2. How many sigmas should I use?
-3. What's the max order I should use for the angular probes?
-4. What cutoff should I apply?
+1. How many sigmas should I use?
+1. What's the max order I should use for the angular probes?
+1. What cutoff should I apply?
 
 For 1, in the original paper the sigmas were chosen manually. It might be nice to consider choosing the sigmas using hyperparameter tuning.
 

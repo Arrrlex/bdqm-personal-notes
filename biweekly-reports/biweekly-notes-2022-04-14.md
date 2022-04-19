@@ -11,9 +11,9 @@
 
 ## Tasks Planned
 
-- [ ] (Carried over) Run some experiments comparing different samplers and different
+- \[ \] (Carried over) Run some experiments comparing different samplers and different
   pruners
-- [ ] Try to run the hyperparameter tuning pipeline on a larger dataset, for
+- \[ \] Try to run the hyperparameter tuning pipeline on a larger dataset, for
   example progressively larger samples from the 200K OC20 dataset.
 
 ## Literature Review
@@ -52,7 +52,6 @@ corresponding change on the other side. This allows several concepts to be
 very intuitively understood, such as adjacency matrix and tensor representations
 of graphs.
 
-
 #### What is the weakest point of the paper?
 
 The authors have clearly tried to come up with a uniform "visual language" for
@@ -75,5 +74,7 @@ fruitfully compare them with our approach.
 ## References
 
 \[1\]: [bdqm-hyperparam-tuning](https://github.com/Arrrlex/bdqm-hyperparam-tuning/tree/ed94ed8f6dd2aaa0eb9cbbf218af4c07a9e0941c)
+
 \[2\]: B Sanchez-Lengenling, E Reif, A Pierce, A B Wiltschko. A Gentle Introduction to Graph Neural Networks. In: Distill. Published Sept 2. 2021.
+
 \[3\]: [OC20 Leaderboard](https://opencatalystproject.org/leaderboard.html)

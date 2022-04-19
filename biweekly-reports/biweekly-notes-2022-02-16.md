@@ -10,7 +10,7 @@ As part of the Hyperparameter Optimization project group, in the last 2 weeks I:
 - Did deeper research into hyperparameter optimization libraries (in particular optuna)
   - The previous semester's cohort used Facebook's Ax, but in our shared notes I outlined why we might use Optuna instead
 - Made a list of hyperparameters to optimize
-- Converted the training data from `.traj` format to `.lmdb` format (see [this script]))
+- Converted the training data from `.traj` format to `.lmdb` format (see \[this script\]))
 - Did an initial literature search for papers related to hyperparameter optimization
 
 ## Tasks Planned

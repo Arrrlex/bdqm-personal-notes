@@ -70,12 +70,12 @@ hyperparameter tuning job, I can confidently compare it to other trained models.
 
 ## Tasks Planned
 
-- [ ] (Carried over) I realized that I have never verified I'm able to reproduce the relevant results from the GMP paper, so I would like to do that as a "sanity check" on our tuning code
-- [ ] Run some experiments comparing different samplers and different
+- \[ \] (Carried over) I realized that I have never verified I'm able to reproduce the relevant results from the GMP paper, so I would like to do that as a "sanity check" on our tuning code
+- \[ \] Run some experiments comparing different samplers and different
   pruners
-- [ ] Verify that, given a suitable search space or enough trials,
+- \[ \] Verify that, given a suitable search space or enough trials,
   we can find the optimal known hyperparameters for the OC20-3K sample
-- [ ] Try to run the hyperparameter tuning pipeline on a larger dataset, for
+- \[ \] Try to run the hyperparameter tuning pipeline on a larger dataset, for
   example progressively larger samples from the 200K OC20 dataset.
 
 ## Literature Review

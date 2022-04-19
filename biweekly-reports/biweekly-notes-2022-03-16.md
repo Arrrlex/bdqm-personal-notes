@@ -5,10 +5,10 @@
 As part of the Hyperparameter Optimization project group, in the last 4 weeks I:
 
 - Ran parallel hyperparameter optimization using Optuna. This required:
-    - Setting up MySQL on PACE ICE
-    - Implementing the code for running jobs using the shared MySQL DB
-    - Creating scripts for starting the MySQL PACE job automatically, and running multiple PACE hyperparameter jobs simultaneously
-    - Documenting all of this in the README for the project \[1\].
+  - Setting up MySQL on PACE ICE
+  - Implementing the code for running jobs using the shared MySQL DB
+  - Creating scripts for starting the MySQL PACE job automatically, and running multiple PACE hyperparameter jobs simultaneously
+  - Documenting all of this in the README for the project \[1\].
 - Increased the number and range of hyperparameters to search over
 - Fix the LMDB creation script to enable use of `torch.DoubleTensor` rather than `torch.FloatTensor` \[2\]
 - Began to generate plots automatically, in order to create a report \[3\]
@@ -18,11 +18,11 @@ Also, as a group we created our midterm presentation.
 
 ## Tasks Planned
 
-- [ ] One of the pieces of feedback we received from our midterm presentation was that we should present our metrics using a standardized unit. In order to do that, I'll need to take a deeper dive into the amptorch code to ensure I understand where to normalize the units.
-- [ ] Tyler and I have both done some work on implementing trial pruning (early stopping), but I think it would be useful for us to pool our resources and make sure it's working correctly.
-- [ ] I realized that I have never verified I'm able to reproduce the relevant results from the GMP paper \[5\], so I would like to do that as a "sanity check" on our training code
-- [ ] I'd like to write up notes on how to use our hyperparameter tuning code, both with and without PACE.
-- [ ] Finally, Reading the OC20 overview paper \[6\], I realized that our random train-validate split might make our hyperparameter search prone to overfitting. I'd like to investigate incorporating out-of-domain data to see how the training performs.
+- \[ \] One of the pieces of feedback we received from our midterm presentation was that we should present our metrics using a standardized unit. In order to do that, I'll need to take a deeper dive into the amptorch code to ensure I understand where to normalize the units.
+- \[ \] Tyler and I have both done some work on implementing trial pruning (early stopping), but I think it would be useful for us to pool our resources and make sure it's working correctly.
+- \[ \] I realized that I have never verified I'm able to reproduce the relevant results from the GMP paper \[5\], so I would like to do that as a "sanity check" on our training code
+- \[ \] I'd like to write up notes on how to use our hyperparameter tuning code, both with and without PACE.
+- \[ \] Finally, Reading the OC20 overview paper \[6\], I realized that our random train-validate split might make our hyperparameter search prone to overfitting. I'd like to investigate incorporating out-of-domain data to see how the training performs.
 
 ## Contribution Description
 
@@ -51,6 +51,7 @@ Figure 15, though not hugely interesting, is highly relevant. It demonstrates th
 This paper does a fantastic job of covering background from multiple disciplines such that, for the non-expert, the material is accessible, yet comprehensive and deep enough to provide an intuitive sense of the difficulty and importance of the material.
 
 In particular, the paper contains:
+
 - Environmental science (explaining the relevance of catalysis to climate change, in particular carbon emission reduction, via technologies such as hydrogen energy storage)
 - Chemistry (explaining the role of a catalyst in a reaction, the relevant properties of catalysis, and the role of atomic simulation in determining catalyst suitability)
 - Computer Science (Giving a more-or-less mathematically precise description of the tasks in a machine learning context, describing the baseline ML models)
